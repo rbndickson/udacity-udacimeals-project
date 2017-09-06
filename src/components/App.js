@@ -18,7 +18,7 @@ class App extends Component {
 //
 // Within this function the state is refactored from an object into an array.
 
-function mapStateToProps (calendar) {
+function mapStateToProps ({ calendar, food }) {
   const dayOrder = ['sunday', 'monday', 'tuesday', 'wednesday', 'thursday', 'friday']
 
   return {
@@ -27,7 +27,7 @@ function mapStateToProps (calendar) {
       //                                        acc    obj
       meals: Object.keys(calendar[day]).reduce((meals, meal) => {
         meals[meal] = calendar[day][meal]
-          ? calendar[day][meal] // ternary if there is a meal keep it else null
+          ? food[calendar[day][meal]] // ternary if there is a meal keep it else null
           : null
 
         return meals
